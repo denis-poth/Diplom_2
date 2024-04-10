@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 public class LoginUserTest {
@@ -34,7 +35,7 @@ public class LoginUserTest {
         Response response = new UserActions().loginUser(user);
         statusCode = response.getStatusCode();
         assertEquals(401, statusCode);
-        assertEquals(false, response.jsonPath().getBoolean("success"));
+        assertFalse(response.jsonPath().getBoolean("success"));
         assertEquals("email or password are incorrect", response.jsonPath().getString("message"));
     }
 }
